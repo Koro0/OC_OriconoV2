@@ -1,0 +1,165 @@
+:root{
+    --main-bg-color: rgb(243, 233, 241);
+}
+html {
+    height: 100%;
+    width: 100%;
+}
+body {
+    background-color: var(--main-bg-color);
+}
+/* header, basket_icon and logo */ 
+a {
+    text-decoration: none;
+}
+header {
+    text-align: center;
+    position: sticky;
+    top: 0;
+    background-color: var(--main-bg-color);
+    z-index: 1;
+}
+#headerLogo {
+    flex-grow: 2;
+}
+
+.basketCard{
+    top: -5px;
+    position: absolute;
+    right: -2px;
+    padding: 0 5px;
+    color: white;
+    background: red;
+    border-radius: 30%;
+    font-size: 1.2rem;
+}
+h1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+/* header End*/
+footer {
+    justify-content: space-between;
+    bottom: 0;
+}
+footer div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+footer div a {
+    margin: 10px;
+}
+.mention {
+    margin-left: 0;
+}
+.contact {
+    margin-right: 0;
+}
+a {
+    text-decoration: none;
+    color: black;
+    margin: 10px;
+}
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    margin: auto 5%;
+}
+.ArtOrdersUl {
+    display: block;
+    justify-content: center;
+    margin: auto 5%;
+}
+li {
+    list-style: none;
+    /* border: 1px solid black;
+    margin: 2rem;
+    background-color: whitesmoke; */
+}
+#none {
+    justify-content: center;
+    text-align: center;
+}
+.ArtOrdersLi { 
+    /* li for Orders */
+    display: flex;
+    flex-direction: row;
+    flex-grow: 2;
+    max-width: 90%;
+    justify-content: space-around;
+}
+.imagesProd {
+    max-width: 100%;
+    max-height: 50%;
+}
+/* .imgOrder {
+    max-width: 200px;
+    max-height: 150px;
+}
+.artName {
+    text-align: center;
+}
+.artNameOrder {
+    text-align: justify;
+}
+.description {
+    text-align: justify;
+    margin: 10px;
+}
+.indexPrice {
+    margin: 10px;
+}
+.imgLogo {
+    background: rgb(207,126,70);
+    background: linear-gradient(114deg, rgba(207,126,70,1) 37%, rgba(172,107,167,1) 48%, rgba(143,91,253,1) 56%);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+#formulaire {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.totalAllArticle {
+    border: aliceblue solid;
+    background: aliceblue;
+    justify-content: center;
+    text-align: center;
+}
+p, li {
+margin: 10px;
+}
+#textForm {
+    text-align: center;
+}
+form {
+    display: flex;
+    flex-direction: column;
+} */
+@media (max-width: 870px) {
+    .imgOrder {
+        max-width: 50px;
+        max-height: 50px;
+    }
+
+}
+@media (max-width: 1146px) {
+    .imagesProd {
+        max-width: 200px;
+    }
+}
+@media (max-width: 680px) {
+    .prodOrder {
+        margin: 5px;
+    }
+}
+@media (max-width: 320px) {
+    .imagesProd {
+        max-width: 150px;
+    }
+}

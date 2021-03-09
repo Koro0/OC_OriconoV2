@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oricono | Order</title>
+    <!-- <link rel="stylesheet" href="../css/style.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/4abf5dc0f7.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <h1>
+            <div id="headerLogo">
+                <a href="../index.html">
+                    <img src="../img/logo.png" alt="logo_Orinoco">
+                </a>
+            </div>
+            <div>
+                <a href="./panier.html">
+                    <i class="fas fa-shopping-basket basketLogo"></i>
+                    <span id="basketCard" class="basketCard">0</span>
+                </a>
+            </div>
+        </h1>
+    </header>
+    <main>
+        <h2>Le panier</h2>
+        <p>Voici la liste de votre panier :</p>
+        <div id="articleOrders" class="container">
+
+        </div>
+        <p id="textForm" >Pour pouvoir valider votre commande, merci de remplir tous les champs.</p>
+        <div id="formulaire">
+            <form method="post" id="form"
+                <label>First Name :</label> <input id="cusFirstName" type="text" name="firstName" placeholder="Ex : Robert" size="30" maxlength="5" required/>
+                <span id="errorFirstName"></span>
+                <br />
+                <label>Last Name :</label> <input id="cusLastName" type="text" name="LastName" placeholder="Ex : DUPONT" size="30" maxlength="5" required/>
+                <span id="errorLastName"></span>
+                <br />
+                <label>Adresse :</label> <input id="cusAddress" type="text" name="adresse" placeholder="1 rue de paris" required/>
+                <span id="errorAddress"></span>
+                <br />
+                <label>City :</label> <input id="cusLive" type="text" name="city" placeholder="75-Paris" required/>
+                <span id="errorCity"></span>
+                <br />
+                <label>Email :</label> <input id="cusEmail" type="email" name="email" placeholder="exemple@exemple.com" required/>
+                <span id="errorEmail"></span>
+                <br />
+                <input type="submit" value="Valider la commande" id="validCommand">
+                <span id="errorSub"></span>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <nav>
+            <div class="mention"><a href="mentionLegal.html">Mention Légal</a</div>
+            <div class="contact"><a href="mailto:contact@oricono.com">Contactez nous</a></div>
+        </nav>
+    </footer>
+    <script src="../js/ajax.js"></script>
+    <script src="../js/route/post.js"></script>
+    <script src="../js/order.js"></script>    
+</body>
+</html>
