@@ -24,7 +24,7 @@ function showsArticle(data) {
 
   for(i=0; i<data.length; i++) {
     let li = document.createElement('li');
-    li.className = 'col-md=12';
+    li.className = 'col-md-12';
     let articleImg = '<div class="thumbnail"> <img class="imagesProd img-responsive" src="' + data[i].imageUrl + '" alt="l\'image du produit"/> </div>';;
     let articleSelect = '<select id="liste">'; //Liste deroulante; variable select
     let articleName = '<h2 class="artName">' + data[i].name + '</h2>'; //nom des produits
@@ -49,7 +49,6 @@ function showsArticle(data) {
       let butt = li.appendChild(document.createElement("button"));
       butt.innerHTML = btnAddArticle;
       let panier;
-      
       butt.addEventListener('click', addArticleInBasket, false);
     }
   } 

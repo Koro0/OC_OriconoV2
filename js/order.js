@@ -12,66 +12,104 @@ fetch('http://localhost:3000/api/teddies')
     console.log(err);
   })  
 
-  // affichier tous les produits du panier
-  function showsOrder(data) {
-    let articleOrder = document.getElementById("articleOrders");
-    let ul = document.createElement('ul');
-    ul.className = "ArtOrdersUl";
-    let orders = JSON.parse(localStorage["products"]);
-    let liSomme = document.createElement('div');
-    liSomme.className = "totalAllArticle";
-    let totalAllArticle = 0;
-
-    if(localStorage["number"] > 0) {
-      for(j=0; j<orders.length; j++) { //parcourir dans le tableau les articles recuper sur le localStorage
-        for(i=0; i<data.length; i++) { //Parcourir tous les articles du "backend"
-          if(orders[j].id == data[i]._id) {  
-            let li = document.createElement('li'); //creer balise li
-            li.className = "ArtOrdersLi"; // attribuer une classe "ArtOrdersLi"
-            let deleteArticle = document.createElement('i'); //creer la balise <i>
-            deleteArticle.className = "fas fa-trash-alt"; //attribuer la classe 
-            //l'image des articles
-            let articleImg = '<a class="prodOrder" href="./product.html?id=' + data[i]._id + '"><img class="imgOrder" src="' + data[i].imageUrl + '" alt="l\'image du produit"/></a>';
-            //nom des articles
-            let articleName = '<a class="prodOrder" href="./product.html?id=' + data[i]._id + '"><h2 class="artNameOrder">' + data[i].name + '</h2></a>'; 
-            //Prix des articles
-            let articlePrice = '<p class="artPricesOrder"> Prix Unitaire : ' + data[i].price + ' €' + '</p>';
-            //quantités sur chaque articles
-            let quantite = "<p> Quantité :" + orders[j].quantite + "</p>";
-            //Prix total des articles
-            let sommeArticle = "<p> Total : " + orders[j].quantite * data[i].price + " € </p>";
-
-            let articleColor = "<p> Option : " + orders[j].option + "</p>";
-            
-            totalAllArticle += orders[j].quantite * data[i].price;
-
-            li.innerHTML = articleImg  + articleName + articleColor + articlePrice + quantite + sommeArticle;
-            ul.appendChild(li)
-            li.appendChild(deleteArticle) //ajout du logo corbeille
-            //console.log(j, orders[j]);
-            let temp = j;
-            deleteArticle.addEventListener('click', deleteArticleInOrder());
-          } 
-        }
+function showsOrder(data) {
+  let articleOrder = document.getElementById("articleOrders");
+  let table = document.createElement('table');
+  table.className = 'row';
+  let orders = JSON.parse(localStorage["products"]);
+  let divSomme = document.createElement('div');
+  divSomme.className = "totalAllArticle";
+  let totalAllArticle = 0;
+  if(localStorage["number"] > 0) {
+    for(j=0; j<orders.length; j++) { //parcourir dans le tableau les articles recuper sur le localStorage
+      for(i=0; i<data.length; i++) { //Parcourir tous les articles du "backend"
+        if(orders[j].id == data[i]._id) { 
+          let tr = document.createElement('tr'); //creer balise tr
+          let deleteArticle = document.createElement('i'); //creer la balise <i>
+          deleteArticle.className = "fas fa-trash-alt"; //attribuer la classe 
+          //l'image des articles
+          let articleImg = '<a class="prodOrder" href="./product.html?id=' + data[i]._id + '"><img class="imgOrder" src="' + data[i].imageUrl + '" alt="l\'image du produit"/></a>';
+          //nom des articles
+          let articleName = '<a class="prodOrder" href="./product.html?id=' + data[i]._id + '"><h2 class="artNameOrder">' + data[i].name + '</h2></a>'; 
+          //Prix des articles
+          let articlePrice = '<p class="artPricesOrder"> Prix Unitaire : ' + data[i].price + ' €' + '</p>';
+          //quantités sur chaque articles
+          let quantite = "<p> Quantité :" + orders[j].quantite + "</p>";
+          //Prix total des articles
+          let sommeArticle = "<p> Total : " + orders[j].quantite * data[i].price + " € </p>";
+          let articleColor = "<p> Option : " + orders[j].option + "</p>";
+          totalAllArticle += orders[j].quantite * data[i].price;
+          tr.innerHTML =  articleImg  + articleName + articleColor + articlePrice + quantite + sommeArticle;
+          table.appendChild(tr);
+          tr.appendChild(deleteArticle); //ajout du logo corbeille
+          let temp = j;
+          deleteArticle.addEventListener('click', deleteArticleInOrder);
       }
-    } else {
-      let aucunArticle = '<h2 id="none"> Aucun produit ';
-      aucunArticle +=  "n'a était ajouter </h2>";
-      let div = document.createElement('div');
-      div.innerHTML  = aucunArticle;
-      articleOrder.appendChild(div);
     }
-    liSomme.innerHTML = "Prix total des produits : " + totalAllArticle + " €";
-    ul.appendChild(liSomme);
-
-    //ajout de la valeur total des articles dans le panier sur LocalStorage
-    localStorage.setItem("totalPriceInBasket", totalAllArticle); 
-    
-    //afficher le nombre d'article dans le panier
-    document.getElementsByClassName("basketCard").innerHTML = JSON.parse(localStorage["number"]); 
-
-    articleOrder.appendChild(ul);
   }
+};
+
+
+  // // affichier tous les produits du panier
+  // function showsOrder(data) {
+  //   let articleOrder = document.getElementById("articleOrders");
+  //   let ul = document.createElement('ul');
+  //   ul.className = "ArtOrdersUl";
+  //   let orders = JSON.parse(localStorage["products"]);
+  //   let liSomme = document.createElement('div');
+  //   liSomme.className = "totalAllArticle";
+  //   let totalAllArticle = 0;
+
+  //   if(localStorage["number"] > 0) {
+  //     for(j=0; j<orders.length; j++) { //parcourir dans le tableau les articles recuper sur le localStorage
+  //       for(i=0; i<data.length; i++) { //Parcourir tous les articles du "backend"
+  //         if(orders[j].id == data[i]._id) {  
+  //           let li = document.createElement('li'); //creer balise li
+  //           li.className = "ArtOrdersLi"; // attribuer une classe "ArtOrdersLi"
+  //           let deleteArticle = document.createElement('i'); //creer la balise <i>
+  //           deleteArticle.className = "fas fa-trash-alt"; //attribuer la classe 
+  //           //l'image des articles
+  //           let articleImg = '<a class="prodOrder" href="./product.html?id=' + data[i]._id + '"><img class="imgOrder" src="' + data[i].imageUrl + '" alt="l\'image du produit"/></a>';
+  //           //nom des articles
+  //           let articleName = '<a class="prodOrder" href="./product.html?id=' + data[i]._id + '"><h2 class="artNameOrder">' + data[i].name + '</h2></a>'; 
+  //           //Prix des articles
+  //           let articlePrice = '<p class="artPricesOrder"> Prix Unitaire : ' + data[i].price + ' €' + '</p>';
+  //           //quantités sur chaque articles
+  //           let quantite = "<p> Quantité :" + orders[j].quantite + "</p>";
+  //           //Prix total des articles
+  //           let sommeArticle = "<p> Total : " + orders[j].quantite * data[i].price + " € </p>";
+
+  //           let articleColor = "<p> Option : " + orders[j].option + "</p>";
+            
+  //           totalAllArticle += orders[j].quantite * data[i].price;
+
+  //           li.innerHTML = articleImg  + articleName + articleColor + articlePrice + quantite + sommeArticle;
+  //           ul.appendChild(li)
+  //           li.appendChild(deleteArticle) //ajout du logo corbeille
+  //           //console.log(j, orders[j]);
+  //           let temp = j;
+  //           deleteArticle.addEventListener('click', deleteArticleInOrder);
+  //         } 
+  //       }
+  //     }
+  //   } else {
+  //     let aucunArticle = '<h2 id="none"> Aucun produit ';
+  //     aucunArticle +=  "n'a était ajouter </h2>";
+  //     let div = document.createElement('div');
+  //     div.innerHTML  = aucunArticle;
+  //     articleOrder.appendChild(div);
+  //   }
+  //   liSomme.innerHTML = "Prix total des produits : " + totalAllArticle + " €";
+  //   ul.appendChild(liSomme);
+
+  //   //ajout de la valeur total des articles dans le panier sur LocalStorage
+  //   localStorage.setItem("totalPriceInBasket", totalAllArticle); 
+    
+  //   //afficher le nombre d'article dans le panier
+  //   document.getElementsByClassName("basketCard").innerHTML = JSON.parse(localStorage["number"]); 
+
+  //   articleOrder.appendChild(ul);
+  // };
 
   let valid = document.getElementById("validCommand");
   
@@ -95,15 +133,15 @@ fetch('http://localhost:3000/api/teddies')
   // }
 
 
-  document.querySelector('form').setAttribute('action', ajaxPost);
- 
-  ///////////////////recuperer les inputs du formulaire///////////
-  const firstName = document.getElementById('cusFirstName');
-  const lastName = document.getElementById('cusLastName');
-  const userAddress = document.getElementById('cusAddress');
-  const userCity = document.getElementById('cusLive');
-  const userEmail = document.getElementById('cusEmail');
-  const formValid = document.getElementById('validCommand');
+document.querySelector('form').setAttribute('action', ajaxPost);
+
+///////////////////recuperer les inputs du formulaire///////////
+const firstName = document.getElementById('cusFirstName');
+const lastName = document.getElementById('cusLastName');
+const userAddress = document.getElementById('cusAddress');
+const userCity = document.getElementById('cusLive');
+const userEmail = document.getElementById('cusEmail');
+const formValid = document.getElementById('validCommand');
 console.log(userCity.value);
 let contact = [];
 
@@ -184,8 +222,9 @@ let contact = [];
 
   
 
-/*
+
 /////////////////////////// Verifier le champ Email//////////////////
+/*
 userEmail.addEventListener('blur', function (e) {
   var errMsgEmail;
   var regexEmail = /.+@+.\..+/;

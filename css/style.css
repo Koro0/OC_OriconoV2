@@ -1,5 +1,5 @@
 :root{
-    --main-bg-color: rgb(243, 233, 241);
+    --main-bg-color: rgb(243, 233, 241, 1);
 }
 html {
     height: 100%;
