@@ -33,22 +33,29 @@
         </div>
         <p id="textForm" >Pour pouvoir valider votre commande, merci de remplir tous les champs.</p>
         <div id="formulaire">
-            <form method="post" id="form"
-                <label>First Name :</label> <input id="cusFirstName" type="text" name="firstName" placeholder="Ex : Robert" size="30" maxlength="5" required/>
-                <span id="errorFirstName"></span>
-                <br />
-                <label>Last Name :</label> <input id="cusLastName" type="text" name="LastName" placeholder="Ex : DUPONT" size="30" maxlength="5" required/>
-                <span id="errorLastName"></span>
-                <br />
-                <label>Adresse :</label> <input id="cusAddress" type="text" name="adresse" placeholder="1 rue de paris" required/>
-                <span id="errorAddress"></span>
-                <br />
-                <label>City :</label> <input id="cusLive" type="text" name="city" placeholder="75-Paris" required/>
-                <span id="errorCity"></span>
-                <br />
-                <label>Email :</label> <input id="cusEmail" type="email" name="email" placeholder="exemple@exemple.com" required/>
-                <span id="errorEmail"></span>
-                <br />
+            <form method="POST" id="form">
+                <div class="form-group">
+                    <label> First Name :</label> <input id="cusFirstName" type="text" name="firstName" placeholder="Ex : Robert" size="30" maxlength="5" required/>
+                    <span id="errorFirstName"></span>
+                </div>
+                <div class="form-group">
+                    <label>Last Name :</label> <input id="cusLastName" type="text" name="LastName" placeholder="Ex : DUPONT" size="30" maxlength="5" required/>
+                    <span id="errorLastName"></span>
+                </div>
+                <div class="form-group">
+                    <label>Adresse :</label> <input id="cusAddress" type="text" name="adresse" placeholder="1 rue de paris" required/>
+                    <span id="errorAddress"></span>
+                </div>
+                <div class="form-group">
+                </div>
+                <div class="form-group">
+                    <label>City :</label> <input id="cusLive" type="text" name="city" placeholder="75-Paris" required/>
+                    <span id="errorCity"></span>
+                </div>
+                <div class="form-group">
+                    <label>Email :</label> <input id="cusEmail" type="email" name="email" placeholder="exemple@exemple.com" required/>
+                    <span id="errorEmail"></span>
+                </div>
                 <input type="submit" value="Valider la commande" id="validCommand">
                 <span id="errorSub"></span>
             </form>

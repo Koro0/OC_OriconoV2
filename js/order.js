@@ -3,15 +3,15 @@ fetch('http://localhost:3000/api/teddies')
     return response.json()
   })
   .then((data) => {
-    // Work with JSON data here
+   ork with JSON data here
     showsOrder(data)
     
   })
   .catch((err) => {
-    // Do something for an error here
+   o something for an error here
     console.log(err);
   })  
-
+/*
 function showsOrder(data) {
   let articleOrder = document.getElementById("articleOrders");
   let table = document.createElement('table');
@@ -47,90 +47,91 @@ function showsOrder(data) {
       }
     }
   }
-};
+};*/
 
 
-  // // affichier tous les produits du panier
-  // function showsOrder(data) {
-  //   let articleOrder = document.getElementById("articleOrders");
-  //   let ul = document.createElement('ul');
-  //   ul.className = "ArtOrdersUl";
-  //   let orders = JSON.parse(localStorage["products"]);
-  //   let liSomme = document.createElement('div');
-  //   liSomme.className = "totalAllArticle";
-  //   let totalAllArticle = 0;
+ / affichier tous les produits du panier
+ unction showsOrder(data) {
+  let articleOrder = document.getElementById("articleOrders");
+  let ul = document.createElement('ul');
+  ul.className = "ArtOrdersUl";
+  let orders = JSON.parse(localStorage["products"]);
+  let liSomme = document.createElement('div');
+  liSomme.className = "totalAllArticle";
+  let totalAllArticle = 0;
 
-  //   if(localStorage["number"] > 0) {
-  //     for(j=0; j<orders.length; j++) { //parcourir dans le tableau les articles recuper sur le localStorage
-  //       for(i=0; i<data.length; i++) { //Parcourir tous les articles du "backend"
-  //         if(orders[j].id == data[i]._id) {  
-  //           let li = document.createElement('li'); //creer balise li
-  //           li.className = "ArtOrdersLi"; // attribuer une classe "ArtOrdersLi"
-  //           let deleteArticle = document.createElement('i'); //creer la balise <i>
-  //           deleteArticle.className = "fas fa-trash-alt"; //attribuer la classe 
-  //           //l'image des articles
-  //           let articleImg = '<a class="prodOrder" href="./product.html?id=' + data[i]._id + '"><img class="imgOrder" src="' + data[i].imageUrl + '" alt="l\'image du produit"/></a>';
-  //           //nom des articles
-  //           let articleName = '<a class="prodOrder" href="./product.html?id=' + data[i]._id + '"><h2 class="artNameOrder">' + data[i].name + '</h2></a>'; 
-  //           //Prix des articles
-  //           let articlePrice = '<p class="artPricesOrder"> Prix Unitaire : ' + data[i].price + ' €' + '</p>';
-  //           //quantités sur chaque articles
-  //           let quantite = "<p> Quantité :" + orders[j].quantite + "</p>";
-  //           //Prix total des articles
-  //           let sommeArticle = "<p> Total : " + orders[j].quantite * data[i].price + " € </p>";
+  if(localStorage["number"] > 0) {
+    for(j=0; j<orders.length; j++) { //parcourir dans le tableau les articles recuper sur le localStorage
+      for(i=0; i<data.length; i++) { //Parcourir tous les articles du "backend"
+        if(orders[j].id == data[i]._id) {  
+          let li = document.createElement('li'); //creer balise li
+          li.className = "ArtOrdersLi";ttribuer une classe "ArtOrdersLi"
+          let deleteArticle = document.createElement('i'); //creer la balise <i>
+          deleteArticle.className = "fas fa-trash-alt"; //attribuer la classe 
+          //l'image des articles
+          let articleImg = '<a class="prodOrder" href="./product.html?id=' + data[i]._id + '"><img class="imgOrder" src="' + data[i].imageUrl + '" alt="l\'image du produit"/></a>';
+          //nom des articles
+          let articleName = '<a class="prodOrder" href="./product.html?id=' + data[i]._id + '"><h2 class="artNameOrder">' + data[i].name + '</h2></a>'; 
+          //Prix des articles
+          let articlePrice = '<p class="artPricesOrder"> Prix Unitaire : ' + data[i].price + ' €' + '</p>';
+          //quantités sur chaque articles
+          let quantite = "<p> Quantité :" + orders[j].quantite + "</p>";
+          //Prix total des articles
+          let sommeArticle = "<p> Total : " + orders[j].quantite * data[i].price + " € </p>";
 
-  //           let articleColor = "<p> Option : " + orders[j].option + "</p>";
+          let articleColor = "<p> Option : " + orders[j].option + "</p>";
             
-  //           totalAllArticle += orders[j].quantite * data[i].price;
+          totalAllArticle += orders[j].quantite * data[i].price;
 
-  //           li.innerHTML = articleImg  + articleName + articleColor + articlePrice + quantite + sommeArticle;
-  //           ul.appendChild(li)
-  //           li.appendChild(deleteArticle) //ajout du logo corbeille
-  //           //console.log(j, orders[j]);
-  //           let temp = j;
-  //           deleteArticle.addEventListener('click', deleteArticleInOrder);
-  //         } 
-  //       }
-  //     }
-  //   } else {
-  //     let aucunArticle = '<h2 id="none"> Aucun produit ';
-  //     aucunArticle +=  "n'a était ajouter </h2>";
-  //     let div = document.createElement('div');
-  //     div.innerHTML  = aucunArticle;
-  //     articleOrder.appendChild(div);
-  //   }
-  //   liSomme.innerHTML = "Prix total des produits : " + totalAllArticle + " €";
-  //   ul.appendChild(liSomme);
+          li.innerHTML = articleImg  + articleName + articleColor + articlePrice + quantite + sommeArticle;
+          ul.appendChild(li)
+          li.appendChild(deleteArticle) //ajout du logo corbeille
+          //console.log(j, orders[j]);
+          let temp = j;
+          deleteArticle.addEventListener('click', deleteArticleInOrder);
+        } 
+      }
+    }
+  } else {
+    let aucunArticle = '<h2 id="none"> Aucun produit ';
+    aucunArticle +=  "n'a était ajouter </h2>";
+    let div = document.createElement('div');
+    div.innerHTML  = aucunArticle;
+    articleOrder.appendChild(div);
+  }
+  liSomme.innerHTML = "Prix total des produits : " + totalAllArticle + " €";
+  ul.appendChild(liSomme);
 
-  //   //ajout de la valeur total des articles dans le panier sur LocalStorage
-  //   localStorage.setItem("totalPriceInBasket", totalAllArticle); 
+  //ajout de la valeur total des articles dans le panier sur LocalStorage
+  localStorage.setItem("totalPriceInBasket", totalAllArticle); 
     
-  //   //afficher le nombre d'article dans le panier
-  //   document.getElementsByClassName("basketCard").innerHTML = JSON.parse(localStorage["number"]); 
+  //afficher le nombre d'article dans le panier
+  document.getElementsByClassName("basketCard").innerHTML = JSON.parse(localStorage["number"]); 
 
-  //   articleOrder.appendChild(ul);
-  // };
+  articleOrder.appendChild(ul);
+ ;
 
   let valid = document.getElementById("validCommand");
   
 
   function deleteArticleInOrder() {
-    orders.splice(temp, 1); // supression du produit dans le tableau
+    orders.splice(temp, 1);upression du produit dans le tableau
     localStorage.setItem("id", JSON.stringify(orders)); //actualiser le contenu dans le localStorage
-    localStorage.setItem("number", orders.length); // actualiser le nombre des produits 
+    localStorage.setItem("number", orders.length);ctualiser le nombre des produits 
     
     document.location.reload();// rafraichir/actualiser la page
   };
-  // //creation de clé de commande
-  // function makeid(length) { 
-  //   let result           = '';
-  //   let characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  //   let charactersLength = characters.length;
-  //   for (i = 0; i < length; i++ ) {
-  //      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-  //   }
-  //     return result;
-  // }
+  /*
+ /creation de clé de commande
+ unction makeid(length) { 
+  let result           = '';
+  let characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let charactersLength = characters.length;
+  for (i = 0; i < length; i++ ) {
+     result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+    return result;
+ */
 
 
 document.querySelector('form').setAttribute('action', ajaxPost);
@@ -147,11 +148,11 @@ let contact = [];
 
 // function sendPost() {
 //   var req = new XMLHttpRequest();
-// // La requête est asynchrone lorsque le 3ème paramètre vaut true ou est absent
+//a requête est asynchrone lorsque le 3ème paramètre vaut true ou est absent
 //   req.open("POST", "http://localhost:3000/api/order");
-//   // Gestion de l'événement indiquant la fin de la requête
+//  estion de l'événement indiquant la fin de la requête
 //   req.addEventListener("load", function () {
-//       // Affiche la réponse reçue pour la requête
+//      ffiche la réponse reçue pour la requête
 //       console.log(req.responseText);
 //   });
 //     req.send(); 
