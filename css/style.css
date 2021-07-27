@@ -1,3 +1,4 @@
+/* all page */
 :root{
     --main-bg-color: rgb(243, 233, 241, 1);
 }
@@ -33,6 +34,7 @@ header {
     border-radius: 30%;
     font-size: 1.2rem;
 }
+
 h1 {
     display: flex;
     flex-direction: row;
@@ -63,24 +65,13 @@ a {
     color: black;
     margin: 10px;
 }
-ul {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-    margin: auto 5%;
-}
+
 .ArtOrdersUl {
     display: block;
     justify-content: center;
     margin: auto 5%;
 }
-li {
-    list-style: none;
-    /* border: 1px solid black;
-    margin: 2rem;
-    background-color: whitesmoke; */
-}
+
 #none {
     justify-content: center;
     text-align: center;
@@ -111,9 +102,12 @@ li {
     text-align: justify;
     margin: 10px;
 }
+
 .indexPrice {
     margin: 10px;
+     
 }
+
 .imgLogo {
     background: rgb(207,126,70);
     background: linear-gradient(114deg, rgba(207,126,70,1) 37%, rgba(172,107,167,1) 48%, rgba(143,91,253,1) 56%);

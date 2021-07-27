@@ -3,12 +3,12 @@ fetch('http://localhost:3000/api/teddies')
     return response.json()
   })
   .then((data) => {
-   ork with JSON data here
+   //ork with JSON data here
     showsOrder(data)
     
   })
   .catch((err) => {
-   o something for an error here
+   //o something for an error here
     console.log(err);
   })  
 /*
@@ -50,11 +50,11 @@ function showsOrder(data) {
 };*/
 
 
- / affichier tous les produits du panier
- unction showsOrder(data) {
+// affichier tous les produits du panier
+function showsOrder(data) {
   let articleOrder = document.getElementById("articleOrders");
   let ul = document.createElement('ul');
-  ul.className = "ArtOrdersUl";
+  ul.className = "ArtOrdersUl list-unstyled";
   let orders = JSON.parse(localStorage["products"]);
   let liSomme = document.createElement('div');
   liSomme.className = "totalAllArticle";
@@ -65,7 +65,7 @@ function showsOrder(data) {
       for(i=0; i<data.length; i++) { //Parcourir tous les articles du "backend"
         if(orders[j].id == data[i]._id) {  
           let li = document.createElement('li'); //creer balise li
-          li.className = "ArtOrdersLi";ttribuer une classe "ArtOrdersLi"
+          li.className = "ArtOrdersLi";//Attribuer une classe "ArtOrdersLi"
           let deleteArticle = document.createElement('i'); //creer la balise <i>
           deleteArticle.className = "fas fa-trash-alt"; //attribuer la classe 
           //l'image des articles
@@ -109,7 +109,7 @@ function showsOrder(data) {
   document.getElementsByClassName("basketCard").innerHTML = JSON.parse(localStorage["number"]); 
 
   articleOrder.appendChild(ul);
- ;
+};
 
   let valid = document.getElementById("validCommand");
   
@@ -121,17 +121,17 @@ function showsOrder(data) {
     
     document.location.reload();// rafraichir/actualiser la page
   };
-  /*
- /creation de clé de commande
- unction makeid(length) { 
+/*
+//creation de clé de commande
+function makeid(length) { 
   let result           = '';
   let characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   let charactersLength = characters.length;
   for (i = 0; i < length; i++ ) {
-     result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
   }
     return result;
- */
+*/
 
 
 document.querySelector('form').setAttribute('action', ajaxPost);
